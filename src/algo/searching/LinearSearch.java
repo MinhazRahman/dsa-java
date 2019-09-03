@@ -4,6 +4,7 @@ package algo.searching;
  * Searching an array for a particular value.
  * we are given an array, and we want to know which entry in
  * the array, if any, holds a given value.
+ * Time complexity: O(n), an n-element array
  * */
 public class LinearSearch {
 
