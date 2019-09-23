@@ -1,6 +1,5 @@
 package ds.singlylinkedlist;
 
-//create inner class Node
 public class Node{
 	
 	//declare variables

@@ -6,7 +6,7 @@ public class SinglyLinkedList extends AbstractSinglyList{
 	Node head;
 
 	@Override
-	public int search(int data) {
+	public int search(int x) {
 	
 		//start from the head node
 		Node current = head;
@@ -14,7 +14,7 @@ public class SinglyLinkedList extends AbstractSinglyList{
 		//iterate over the list
 		while(current != null) {
 			
-			if(current.data == data) {
+			if(current.data == x) { //found
 				
 				return current.data;
 			}
@@ -23,14 +23,15 @@ public class SinglyLinkedList extends AbstractSinglyList{
 			current = current.next;
 		}
 		
+		//not found
 		return -1;
 	}
 
 	@Override
-	public void insert(int data) {
+	public void insert(int x) {
 
 		//new node
-		Node newNode = new Node(data);
+		Node newNode = new Node(x);
 		
 		if(head != null) {
 			
@@ -45,9 +46,42 @@ public class SinglyLinkedList extends AbstractSinglyList{
 	}
 
 	@Override
-	public int delete(int data) {
+	public int delete(int x) {
 		
-		return 0;
+		//When the list is empty
+		if(isEmpty()) {
+			
+			return -1;
+		}
+		
+		//holds the previous node
+		Node previous = null;
+		
+		//start from the head node
+		Node current = head;
+		
+		//search for x
+		while(current != null && current.data != x) {
+			
+			previous = current;
+			
+			//move to the current node
+			current = current.next;
+		}
+		
+		if(current != null && current.data == x) {  //found
+			
+			//delete the node by changing the references
+			previous.next = current.next;
+			current.next = null;
+			
+			return current.data;
+		}
+		
+		//not found	
+		return -1;
+		
+		
 	}
 
 	@Override

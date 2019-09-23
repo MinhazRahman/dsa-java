@@ -26,10 +26,10 @@ class TestSinglyLinkedList {
 		
 		//print the list
 		System.out.println("List:");
-		list.printList();
-		
+		list.printList();	
 	}
 	
+	@Disabled
 	@Test
 	void testNodeFound() {
 		
@@ -47,6 +47,7 @@ class TestSinglyLinkedList {
 		
 	}
 	
+	@Disabled
 	@Test
 	void testNodeNotFound() {
 		
@@ -63,5 +64,83 @@ class TestSinglyLinkedList {
 		assertTrue(expected == actual);
 		
 	}
+	
+	@Disabled
+	@Test
+	void testFoundAndDelete() {
+		
+		SinglyLinkedList list = new SinglyLinkedList();
+		
+		//insert elements
+		list.insert(1);
+		list.insert(2);
+		list.insert(3);
+		list.insert(4);
+		
+		//print the list
+		System.out.println("List:");
+		list.printList();	
+		
+		//delete element
+		int expected = 2;
+		int actual = list.delete(2);
+		
+		//print the list
+		System.out.println("List:");
+		list.printList();
+		
+		assertTrue(expected == actual);
+	}
+	
+	//@Disabled
+	@Test
+	void testNotFoundAndNotDeleted() {
+		
+		SinglyLinkedList list = new SinglyLinkedList();
+		
+		//insert elements
+		list.insert(1);
+		list.insert(2);
+		list.insert(3);
+		list.insert(4);
+		
+		//print the list
+		System.out.println("List:");
+		list.printList();	
+		
+		//delete element
+		int expected = -1;
+		int actual = list.delete(5);
+		
+		//print the list
+		System.out.println("\nList:");
+		list.printList();
+		
+		assertTrue(expected == actual);
+	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
