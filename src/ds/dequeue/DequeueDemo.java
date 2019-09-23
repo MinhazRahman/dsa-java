@@ -7,6 +7,7 @@ public class DequeueDemo extends AbstractDequeue {
 	
 	//declare the array to hold the queue
 	int[] q;
+	int capacity;
 	
 	//constructor
 	public DequeueDemo(int size) {
@@ -14,96 +15,130 @@ public class DequeueDemo extends AbstractDequeue {
 		//create the array
 		q = new int[size];
 		
+		//initialize the capacity of the queue
+		this.capacity = size - 1;
+		
 	}
 
 	@Override
 	public void insertFirst(int e) {
 		
 		//when there is no element in the queue
-		if(front == 0 && rear == 0) {
+		if(head == 0 && tail == 0) {
 			
 			//insert element at front or rear
-			q[front] = e; //q[rear] = e
+			q[head] = e; //q[rear] = e
 			
 			//increment rear by 1
-			rear++;
+			tail++;
 		}
 	}
 
 	@Override
-	public void insertFront(int e) {
+	public void insertHead(int e) {
 		
 		if(isFull()) {
 			
 			System.out.println("Queue is full!");
 		}
-		else if(front == 0 && rear == 0) {
+		else if(head == 0 && tail == 0) {
 				
 			//insert element
-			q[front] = e;
+			q[head] = e;
 			
 			//increment rear
-			rear++;
+			tail++;
 			
 		}
-		else if(front == 0 && rear != q.length - 1) {
+		else if(head == 0 && tail != q.length - 1) {
 			
 			//set front to (q.length - 1) i.e the last index
-			front = q.length - 1;
-			q[front] = e;
+			head = q.length - 1;
+			q[head] = e;
 		}
-		else if(front != 0) {
+		else if(head != 0) {
 			
 			//decrement q by 1 and insert element
-			q[--front] = e;
+			q[--head] = e;
 		}
 		
 	}
 
 	@Override
-	public void insertRear(int e) {
+	public void insertTail(int e) {
 
 		if(isFull()) {
 			
 			System.out.println("Queue is full!");
 		}
-		else if(rear != q.length - 1) {
+		else if(tail != q.length - 1) {
 			
 			//insert element and increment rear by 1
-			q[rear++] = e;
+			q[tail++] = e;
 		}
-		else if (rear == q.length - 1 && front != 0) {
+		else if (tail == q.length - 1 && head != 0) {
 			
 			//insert element
-			q[rear] = e;
+			q[tail] = e;
 			
 			//set rear to 0
-			rear = 0;
+			tail = 0;
 		}
 	}
 
 	@Override
-	public int deleteFront(int e) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteHead() {
+		
+		//get the head element
+		int x = q[head];
+		
+		//new head
+		if(head == q.length - 1) {
+			
+			head = 0;
+		}
+		else {
+			head = head + 1;
+		}
+		
+		
+		return x;
 	}
 
 	@Override
-	public int deleteRear(int e) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteTail() {
+		
+		int x;
+		 
+		if(tail == 0) {
+			
+			//new tail
+			tail = q.length - 1;
+			
+			x = q[tail];
+
+		}
+		else {
+			
+			//new tail
+			tail = tail - 1;
+			
+			x = q[tail];
+		}
+		
+		return x;
 	}
 
 	@Override
 	public boolean isEmpty() {
 		
-		return front == rear;
+		return head == tail;
 	}
 
 	@Override
 	public boolean isFull() {
 		
-		return (front == 0 && rear == q.length - 1) || (front == rear + 1);
+		return (head == 0 && tail == q.length - 1) || (head == tail + 1);
 	}
 
 }

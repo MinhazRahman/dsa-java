@@ -3,23 +3,23 @@ package ds.dequeue;
 public abstract class AbstractDequeue {
 	
 	//declare dequeue properties
-	int front;
-	int rear;
+	int head;
+	int tail;
 	
 	//constructor
 	public AbstractDequeue() {
 		
-		this.front = 0;
-		this.rear = 0;
+		this.head = 0;
+		this.tail = 0;
 	}
 	
 	//abstract methods
 	public abstract void insertFirst(int e);
-	public abstract void insertFront(int e);
-	public abstract void insertRear(int e);
+	public abstract void insertHead(int e);
+	public abstract void insertTail(int e);
 	
-	public abstract int deleteFront(int e);
-	public abstract int deleteRear(int e);
+	public abstract int deleteHead();
+	public abstract int deleteTail();
 	
 	public abstract boolean isEmpty();
 	public abstract boolean isFull();
