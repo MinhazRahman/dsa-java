@@ -1,4 +1,4 @@
-package ds.heap;
+package ds.maxheap;
 
 import static org.junit.jupiter.api.Assertions.*;
 

@@ -1,4 +1,4 @@
-package ds.heap;
+package ds.maxheap;
 
 public class HeapMain {
 

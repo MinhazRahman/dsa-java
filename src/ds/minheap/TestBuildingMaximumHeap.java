@@ -1,4 +1,4 @@
-package ds.heap;
+package ds.minheap;
 
 import static org.junit.Assert.assertTrue;
 
@@ -15,15 +15,15 @@ class TestBuildingMaximumHeap {
 		
 		int heapSize = a.length;
 		
-		System.out.println("Unordered List:" + Arrays.toString(a));
+		System.out.println("Unordered Array:" + Arrays.toString(a));
 		
-		BuildingMaximumHeap heap = new BuildingMaximumHeap(heapSize);
+		BuildingMinimumHeap heap = new BuildingMinimumHeap(heapSize);
 		
-		heap.buildMaximumHeap(a);
+		heap.buildMinimumHeap(a);
 		
-		System.out.println("Ordered List: " + Arrays.toString(a));
+		System.out.println("Ordered Array: " + Arrays.toString(a));
 		
-		int[] expected = {16, 14, 10, 8, 7, 9, 3, 2, 4, 1};
+		int[] expected = {1, 2, 3, 4, 7, 9, 10, 14, 8, 16};
 		int[] actual = a;
 		
 		assertTrue(Arrays.equals(expected, actual));

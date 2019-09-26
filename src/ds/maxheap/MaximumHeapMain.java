@@ -1,4 +1,4 @@
-package ds.heap;
+package ds.maxheap;
 
 import java.util.Arrays;
 
