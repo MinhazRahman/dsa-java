@@ -1,4 +1,4 @@
-package algo.heapsort;
+package algo.heapsortminheap;
 
 import static org.junit.Assert.assertTrue;
 
@@ -22,7 +22,7 @@ class TestHeapsort {
 		
 		System.out.println("Sorted Array: " + Arrays.toString(a));
 		
-		int[] expected = {1, 2, 3, 4, 7, 8, 9, 10, 14, 16};
+		int[] expected = {16, 14, 10, 9, 8, 7, 4, 3, 2, 1};
 		int[] actual = a;
 		
 		assertTrue(Arrays.equals(expected, actual));
