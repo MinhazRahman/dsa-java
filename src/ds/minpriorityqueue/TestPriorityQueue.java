@@ -1,4 +1,4 @@
-package ds.maxpriorityqueue;
+package ds.minpriorityqueue;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -18,11 +18,11 @@ class TestPriorityQueue {
 		
 		PriorityQueue pq = new PriorityQueue(heapSize);
 		
-		//build the maximum heap
-		pq.buildMaximumHeap(a);
+		//build the minimum heap
+		pq.buildMinimumHeap(a);
 		
-		int expected = 16;
-		int actual = pq.maximum(a);
+		int expected = 1;
+		int actual = pq.minimum(a);
 		
 		assertTrue(expected == actual);
 		
@@ -37,11 +37,11 @@ class TestPriorityQueue {
 		
 		PriorityQueue pq = new PriorityQueue(heapSize);
 		
-		//build the maximum heap
-		pq.buildMaximumHeap(a);
+		//build the minimum heap
+		pq.buildMinimumHeap(a);
 		
-		int expected = 16;
-		int actual = pq.extractMaximum(a);
+		int expected = 1;
+		int actual = pq.extractMinimum(a);
 		
 		assertTrue(expected == actual);
 		
@@ -51,19 +51,21 @@ class TestPriorityQueue {
 	
 	@Disabled
 	@Test
-	void testIncreaseKey() throws SmallerKey {
+	void testDecreaseKey() throws LargerKey {
 		
 		int[] a = {4, 1, 3, 2, 16, 9, 10, 14, 8, 7};
 		int heapSize = a.length;
 		
 		PriorityQueue pq = new PriorityQueue(heapSize);
 		
-		//build the maximum heap
-		pq.buildMaximumHeap(a);
+		//build the minimum heap
+		pq.buildMinimumHeap(a);
 		
-		pq.increaseKey(a, 3, 15);
+		System.out.println(Arrays.toString(a));
 		
-		pq.buildMaximumHeap(a);
+		pq.decreaseKey(a, 4, 5); // i = 4, key = 5
+		
+		pq.buildMinimumHeap(a);
 		
 		System.out.println(Arrays.toString(a));
 		
@@ -71,19 +73,17 @@ class TestPriorityQueue {
 	
 	//@Disabled
 	@Test
-	void testInsert() throws SmallerKey{
+	void testInsert() throws LargerKey{
 		
-		int[] a = {4, 1, 3, 2, 16, 9, 10, 14, 8, 7, 0, 0}; //length = 12
+		int[] a = {4, 5, 3, 2, 16, 9, 10, 14, 8, 7, 0, 0}; //length = 12
 		int heapSize = 10;
 		
 		PriorityQueue pq = new PriorityQueue(heapSize);
 		
-		//build the maximum heap
-		pq.buildMaximumHeap(a);
+		//build the minimum heap
+		pq.buildMinimumHeap(a);
 		
-		System.out.println(Arrays.toString(a));
-		
-		pq.insert(a, 17);
+		pq.insert(a, 1);
 		
 		System.out.println(Arrays.toString(a));
 		
