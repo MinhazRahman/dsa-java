@@ -69,7 +69,7 @@ class TestPriorityQueue {
 	void testInsert() throws SmallerKey{
 		
 		int[] a = {4, 1, 3, 2, 16, 9, 10, 14, 8, 7, 0, 0}; //length = 12
-		int heapSize = a.length - 2;
+		int heapSize = 10;
 		
 		PriorityQueue pq = new PriorityQueue(heapSize);
 		
@@ -79,6 +79,12 @@ class TestPriorityQueue {
 		pq.insert(a, 17);
 		
 		System.out.println(Arrays.toString(a));
+		
+		//pq.insert(a, 18);
+		
+		//System.out.println(Arrays.toString(a));
+		
+		
 		
 	}
 
