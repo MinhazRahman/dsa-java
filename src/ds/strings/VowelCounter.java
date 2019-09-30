@@ -53,6 +53,34 @@ public class VowelCounter {
 				break;
 			}
 		}
+		
+		return count;
+	}
+	
+	public static int findVowels(String str) {
+
+		//string containing vowels
+		String vowelString = "aeiou";
+		
+		//convert the string to character array
+		char[] letters = str.toLowerCase().toCharArray();
+		
+		char[] vowels = vowelString.toCharArray();
+
+		//vowel counter
+		int count = 0;
+
+		//for each character in letters
+		for (char c : letters) {
+			
+			for(char v : vowels) {
+				
+				if(c == v) {
+					count ++;
+				}
+			}
+		}
+		
 		return count;
 	}
 
@@ -67,6 +95,8 @@ public class VowelCounter {
 		System.out.println("Consonants: " + VowelCounter.countConsonant(str));
 		
 		System.out.println("Vowels: " + VowelCounter.countVowels(str));
+		
+		System.out.println("Vowels: " + VowelCounter.findVowels(str));
 
 	}
 
