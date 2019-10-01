@@ -65,7 +65,14 @@ public class BuildingMinimumHeap {
 	// get the index of the parent
 	public int parent(int i) {
 
-		return i / 2;
+		if (i % 2 == 0) {
+
+			return (i / 2 - 1);
+		} 
+		else {
+
+			return i / 2;
+		}
 	}
 
 	// get the index of the left child

@@ -10,16 +10,16 @@ public class BuildingMaximumHeap {
 
 		this.heapSize = size;
 	}
-	
-	//build maximum heap
+
+	// build maximum heap
 	public void buildMaximumHeap(int[] a) {
-		
-		//heapSize = a.length;
-		
-		//For n-element heap, each node n/2, n/2 + 1, n/2 + 2,.....n is a leaf 
-		//and is thus the root of a trivial max-heap
-		for(int i = (a.length - 1)/2; i >= 0; i--) {
-			
+
+		// heapSize = a.length;
+
+		// For n-element heap, each node n/2, n/2 + 1, n/2 + 2,.....n is a leaf
+		// and is thus the root of a trivial max-heap
+		for (int i = (a.length - 1) / 2; i >= 0; i--) {
+
 			maxHeapify(a, i);
 		}
 	}
@@ -66,7 +66,14 @@ public class BuildingMaximumHeap {
 	// get the index of the parent
 	public int parent(int i) {
 
-		return i / 2;
+		if (i % 2 == 0) {
+
+			return (i / 2 - 1);
+		} 
+		else {
+
+			return i / 2;
+		}
 	}
 
 	// get the index of the left child
