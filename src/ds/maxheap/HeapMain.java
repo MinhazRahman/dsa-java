@@ -11,7 +11,7 @@ public class HeapMain {
 		
 		int[] ha = {16, 14, 10, 8, 7, 9, 3, 2, 4, 1, 0};
 		
-		int i = 6;
+		int i = 2;
 		int parent = heap.parent(i);
 		int left = heap.left(i);
 		int right = heap.right(i);
