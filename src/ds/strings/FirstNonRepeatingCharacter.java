@@ -1,6 +1,6 @@
 package ds.strings;
 
-public class FirstNonReaptingCharacter {
+public class FirstNonRepeatingCharacter {
 
 	public static char getFirstNonReaptingCharacter(String str) {
 		
@@ -49,7 +49,7 @@ public class FirstNonReaptingCharacter {
 		
 		String str = "swiss";
 		
-		char c = FirstNonReaptingCharacter.getFirstNonReaptingCharacter(str);
+		char c = FirstNonRepeatingCharacter.getFirstNonReaptingCharacter(str);
 		
 		System.out.println(c);
 		
