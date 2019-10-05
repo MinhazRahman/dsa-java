@@ -1,5 +1,9 @@
 package ds.strings;
 
+/**
+ * Remove adjacent duplicate characters from the string.
+ * "aaabbbccdddefghiiiiaaa" becomes "abcdefghia"
+ * */
 public class RemovingDuplicateCharacters {
 	
 	public static String removeDuplicateCharacters(String str) {
@@ -29,7 +33,7 @@ public class RemovingDuplicateCharacters {
 
 	public static void main(String[] args) {
 
-		String s = "aaabbbccdddefghiiii";
+		String s = "aaabbbccdddefghiiiiaaa";
 		
 		s = RemovingDuplicateCharacters.removeDuplicateCharacters(s);
 		
