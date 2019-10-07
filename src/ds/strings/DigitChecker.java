@@ -7,6 +7,11 @@ public class DigitChecker {
 		//create boolean variable
 		boolean d = false;
 		
+		if(str == null) {
+			
+			return d;
+		}
+		
 		//iterate over the string
 		for(int i = 0; i < str.length(); i++) {
 			
@@ -43,10 +48,36 @@ public class DigitChecker {
 	}
 
 	public static void main(String[] args) {
-
-		String str = "f1234f";
 		
-		System.out.println(DigitChecker.isDigitOnly(str));
+		System.out.println(DigitChecker.isDigitOnly("f1234f"));
+		
+		System.out.println(DigitChecker.isDigitOnly(""));
+		
+		System.out.println(DigitChecker.isDigitOnly(null));
+		
+		System.out.println(DigitChecker.isDigitOnly("1234"));
+		
+		System.out.println(DigitChecker.isDigitOnly("1234v"));
+
+		System.out.println(DigitChecker.isDigitOnly("123v4"));	
+		
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
