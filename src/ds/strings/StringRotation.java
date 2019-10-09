@@ -58,6 +58,25 @@ public class StringRotation {
 		
 		return rotatedStr.equals(rotation);
 	}
+	
+	public static boolean isSubstring(String original, String rotation) {
+		
+		if(original.length() != rotation.length()) {
+			
+			return false;
+		}
+		
+		//concatenate original with itself
+		String concatenated = original + original;
+		
+		//check for rotation
+		if(concatenated.lastIndexOf(rotation) != -1){
+			
+			return true;
+		}
+		
+		return false;
+	}
 
 	public static void main(String[] args) {
 
@@ -74,6 +93,9 @@ public class StringRotation {
 		System.out.println("Anti Clockwise: " + s2);
 		
 		System.out.println("Is Rotation: " + StringRotation.isRotation("Programming","ingProgramm", k));
+		
+		System.out.println("Is Rotation: " + StringRotation.isSubstring("waterbottle", "erbottlewat"));
+
 		
 		
 	}
