@@ -6,35 +6,39 @@ package ds.strings;
  * 3. Using Bits
  * */
 
-public class DuplicateCharacters {
+/*
+ * Finding duplicates in a string by using hash table
+ */
+
+public class DuplicatesUsingHashTable {
 	
 	public static void printDuplicate(String str) {
 		
 		//create an array
-		int[] count = new int[256];
+		int[] hashTable = new int[256];
 		
-		//initialize the array with zeros
+		//initialize the array with zeros, hashTable[0..255]
 		for(int i = 0; i < 256; i++) {
 			
-			count[i] = 0;
+			hashTable[i] = 0;
 		}
 		
 		//iterate over the string and based on the ascci value of each character
-		//increment the value in the count array at corresponding position
+		//increment the value in the hash table at corresponding position
 		for(int i = 0; i < str.length(); i++) {
 			
 			//ascii equivalent of the character at i
 			int j = str.charAt(i); 
 			
-			//increment the value in count array at index j
-			count[j] ++;
+			//increment the value in hash table at index j
+			hashTable[j] ++;
 		}
 		
 		//print the duplicate characters
-		for(int i = 0; i < count.length; i++) {
+		for(int i = 0; i < hashTable.length; i++) {
 			
-			if(count[i] > 1) {
-				System.out.println( (char)i + ":" + count[i]);
+			if(hashTable[i] > 1) {
+				System.out.println( (char)i + ":" + hashTable[i]);
 			}
 		}
 		
@@ -44,7 +48,7 @@ public class DuplicateCharacters {
 
 		String str = "Java Programming";
 		
-		DuplicateCharacters.printDuplicate(str);
+		DuplicatesUsingHashTable.printDuplicate(str);
 		
 	}
 
