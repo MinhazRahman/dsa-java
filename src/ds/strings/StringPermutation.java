@@ -2,32 +2,27 @@ package ds.strings;
 
 public class StringPermutation {
 
-	public static String permute(String str) {
-
-		// convert the character into char array
-		char[] chars = str.toCharArray();
-
-		// string will hold all the permutations
-		String permutations = "";
-
-		char[] tempArray = new char[str.length()];
-
-		// perform permutation
-		for (int i = 0; i < str.length(); i++) {
-
-			tempArray = swap(str.toCharArray(), 0, i);
-
-			//System.out.println(String.valueOf(tempArray));
-
-			for (int j = 1; j < str.length(); j++) {
+	public static void permute(char[] s, int l, int h) {
+		
+		int i;
+		
+		if(l == h) {
+			
+			System.out.println(String.valueOf(s));
+		}
+		else {
+			
+			for(i = l ; i <= h; i++) {
 				
-				tempArray = swap(tempArray, 1, j);
-
-				permutations += String.valueOf(tempArray) + " ";
+				swap(s, l, i);
+				
+				permute(s, l + 1, h);
+				
+				swap(s, l, i);
 			}
 		}
 
-		return permutations;
+		
 	}
 
 	private static char[] swap(char[] charArray, int i, int j) {
@@ -44,11 +39,11 @@ public class StringPermutation {
 
 	public static void main(String[] args) {
 
-		String abc = "ABC";
+		String str = "ABC";
+		
+		char[] charSet = str.toCharArray();
 
-		abc = StringPermutation.permute(abc);
-
-		System.out.println(abc);
+		StringPermutation.permute(charSet, 0, str.length() - 1);
 
 	}
 

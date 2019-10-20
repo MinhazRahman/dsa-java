@@ -1,57 +1,48 @@
 package ds.strings;
 
-import java.util.Set;
-import java.util.TreeSet;
-
 public class Permutation {
+	
+	//holds the flags to determine whether a character is already taken or not
+	int[] a = new int[10];
 
-	public static Set<String> permute(String str) {
-
-		// convert the character into char array
-		Set<String> strSet = new TreeSet<String>();
-
-		char[] tempArray = new char[str.length()];
-
-		// perform permutation
-		for (int i = 0; i < str.length(); i++) {
-
-			tempArray = swap(str.toCharArray(), 0, i);
-
-			for (int j = 0; j < str.length(); j++) {
+	//holds the result
+	char[] r = new char[10];
+	
+	
+	public void permute(char[] s, int k) {
+		
+		int i;
+		
+		if( k == s.length) {
+			
+			System.out.println(String.valueOf(r));
+		}
+		else {
+			
+			for(i = 0; i < s.length; i++) {
 				
-				tempArray = swap(tempArray, 0, j);
-
-				strSet.add(String.valueOf(tempArray));
+				if(a[i] == 0) {
+					
+					r[k] = s[i];
+					a[i] = 1;
+					permute(s, k + 1);
+					a[i] = 0;	
+				}
 			}
 		}
-
-		return strSet;
 	}
 
-	private static char[] swap(char[] charArray, int i, int j) {
-
-		// swap characters
-		char temp = charArray[i];
-
-		charArray[i] = charArray[j];
-
-		charArray[j] = temp;
-
-		return charArray;
-	}
-
-	public static void main(String[] args) {
-
-		String abc = "ABCD";
 		
-		Set<String> set = new TreeSet<>();
+	public static void main(String[] args) {
+		
+		Permutation p = new Permutation();
 
-		set = Permutation.permute(abc);
-
-		for(String str: set) {
-			
-			System.out.println(str);
-		}
+		String str = "ABC";
+		
+		char[] chars = str.toCharArray();
+		
+		p.permute(chars, 0);
+		
 
 	}
 
