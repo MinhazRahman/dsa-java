@@ -8,7 +8,6 @@ public class Permutation {
 	//holds the result
 	char[] r = new char[10];
 	
-	
 	public void permute(char[] s, int k) {
 		
 		int i;
