@@ -1,17 +1,24 @@
-package ds.trees;
+package ds.binarytree;
 
 public class Node {
 
 	//attributes
 	int data;
-	Node parent;
 	Node left;
 	Node right;
 	
-	//constructor
+	//constructors
+	public Node() {
+		
+		this.left = null;
+		this.right = null;
+		
+	}
 	public Node(int data) {
 		
 		this.data = data;
+		this.left = null;
+		this.right = null;
 	}
 	
 	@Override 
