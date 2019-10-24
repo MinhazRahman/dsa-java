@@ -3,6 +3,7 @@ package ds.binarytree;
 import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.Scanner;
+import java.util.Stack;
 
 /**
  * Create a binary tree using queue data structure
@@ -96,6 +97,78 @@ public class BinaryTree {
 			postorder(node.right);
 			System.out.println(node);
 		}
+	}
+	
+	//iterative preorder
+	public void iterativePreorder(Node node) {
+		
+		Stack<Node> stack = new Stack<>();
+		
+		while(node != null || !stack.empty()) {
+			
+			if(node != null) {
+				
+				System.out.println(node);
+				stack.push(node);
+				
+				node = node.left;
+			}
+			else {
+				
+				node = stack.pop();
+				node = node.right;
+			}	
+		}	
+	}
+	
+	//iterative inorder
+	public void iterativeInorder(Node node) {
+		
+		Stack<Node> stack = new Stack<>();
+		
+		while(node != null || !stack.empty()) {
+			
+			if(node != null) {
+				
+				stack.push(node);
+				
+				node = node.left;
+			}
+			else {
+				
+				node = stack.pop();
+				
+				System.out.println(node);
+				
+				node = node.right;
+			}
+		}	
+	}
+	
+	//iterative postorder
+	public void iterativePostorder(Node node) {
+		
+		Stack<Node> stack = new Stack<>();
+		
+		while(node != null || !stack.empty()) {
+			
+			if(node != null) {
+				
+				stack.push(node);
+				
+				node = node.left;
+				
+			}
+			else {
+				
+				node = stack.pop();	
+				stack.push(node);
+				node = node.right;
+				
+				System.out.println(node);
+
+			}
+		}	
 	}
 	
 }

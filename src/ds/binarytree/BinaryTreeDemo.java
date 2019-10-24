@@ -8,6 +8,7 @@ public class BinaryTreeDemo {
 		
 		binaryTree.create();
 		
+		/*
 		System.out.println("Pre order traversal: ");
 		binaryTree.preorder(binaryTree.root);
 		
@@ -16,6 +17,17 @@ public class BinaryTreeDemo {
 		
 		System.out.println("Post order traversal: ");
 		binaryTree.postorder(binaryTree.root);
+		
+		*/
+		
+		System.out.println("Iterative preorder traversal: ");
+		binaryTree.iterativePreorder(binaryTree.root);
+		
+		System.out.println("Iterative inorder traversal: ");
+		binaryTree.iterativeInorder(binaryTree.root);
+		
+		System.out.println("Iterative postorder traversal: ");
+		binaryTree.iterativePostorder(binaryTree.root);
 
 	}
 
