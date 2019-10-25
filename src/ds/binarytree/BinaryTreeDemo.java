@@ -26,8 +26,8 @@ public class BinaryTreeDemo {
 		System.out.println("Iterative inorder traversal: ");
 		binaryTree.iterativeInorder(binaryTree.root);
 		
-		System.out.println("Iterative postorder traversal: ");
-		binaryTree.iterativePostorder(binaryTree.root);
+		System.out.println("Iterative levelorder traversal: ");
+		binaryTree.iterativeLevelorder(binaryTree.root);
 
 	}
 
