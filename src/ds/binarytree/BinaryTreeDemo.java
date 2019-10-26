@@ -28,6 +28,12 @@ public class BinaryTreeDemo {
 		
 		System.out.println("Iterative levelorder traversal: ");
 		binaryTree.iterativeLevelorder(binaryTree.root);
+		
+		System.out.println("Number of nodes: ");
+		System.out.println(binaryTree.countNode(binaryTree.root));
+		
+		System.out.println("Number of leaf nodes: ");
+		System.out.println(binaryTree.countLeafNodes(binaryTree.root));
 
 	}
 

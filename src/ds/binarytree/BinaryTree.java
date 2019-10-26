@@ -15,7 +15,7 @@ public class BinaryTree {
 	Queue<Node> queue;
 
 	Scanner input;
-	int x;
+	int x, counter, leafCounter;
 
 	// constructor
 	public BinaryTree() {
@@ -155,9 +155,10 @@ public class BinaryTree {
 				s.push(node.right);
 				node = node.right;
 			}
-			else {
-				
+			else if (node.left != null) {
+
 				s.push(node.left);
+				node = node.left;
 			}
 		}
 	}
@@ -194,6 +195,90 @@ public class BinaryTree {
 			}
 
 		}
+	}
+	
+	//counting nodes in a binary tree
+	public int countNode(Node node) {
+		
+		if(node != null) {
+			
+			counter ++; 
+			
+			countNode(node.left);
+			countNode(node.right);
+			
+		}
+		
+		return counter;
+	}
+	
+	//counting nodes in a binary tree
+	public int countNodesXY(Node node) {
+		int x, y;
+		
+		if(node != null) {
+			
+			x = countNodesXY(node.left);
+			y = countNodesXY(node.right);
+			
+			return x + y +1;
+		}
+		
+		return 0;
+	}
+	
+	//counting nodes of degree two
+	public int countNodesOfDegreeTwo(Node node) {
+		int x, y;
+		
+		if(node != null) {
+			
+			x = countNodesOfDegreeTwo(node.left);
+			y = countNodesOfDegreeTwo(node.right);
+			
+			if(node.left != null && node.right != null) {
+				
+				return x + y +1;
+			}
+			else {
+				return x + y;
+			}
+			
+		}
+		
+		return 0;
+	}
+	
+	//counting sum of all the nodes in a binary tree
+	public int sumOfAllElements(Node node) {
+		int x, y;
+		
+		if(node != null) {
+			
+			x = sumOfAllElements(node.left);
+			y = sumOfAllElements(node.right);
+			
+			return x + y + node.data;
+		}
+		
+		return 0;
+	}
+	
+	//counting leaf nodes
+	public int countLeafNodes(Node node) {
+		
+		if(node != null) {
+			
+			if(node.left == null && node.right == null) {
+				
+				leafCounter++;
+			}
+			
+			countLeafNodes(node.left);
+			countLeafNodes(node.right);
+		}
+		
+		return leafCounter;
 	}
 
 }
