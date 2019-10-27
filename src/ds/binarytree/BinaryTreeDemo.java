@@ -20,20 +20,31 @@ public class BinaryTreeDemo {
 		
 		*/
 		
-		System.out.println("Iterative preorder traversal: ");
-		binaryTree.iterativePreorder(binaryTree.root);
-		
-		System.out.println("Iterative inorder traversal: ");
-		binaryTree.iterativeInorder(binaryTree.root);
-		
-		System.out.println("Iterative levelorder traversal: ");
-		binaryTree.iterativeLevelorder(binaryTree.root);
+		/*
+		 * System.out.println("Iterative preorder traversal: ");
+		 * binaryTree.iterativePreorder(binaryTree.root);
+		 * 
+		 * System.out.println("Iterative inorder traversal: ");
+		 * binaryTree.iterativeInorder(binaryTree.root);
+		 * 
+		 * System.out.println("Iterative levelorder traversal: ");
+		 * binaryTree.iterativeLevelorder(binaryTree.root);
+		 */
 		
 		System.out.println("Number of nodes: ");
 		System.out.println(binaryTree.countNode(binaryTree.root));
 		
 		System.out.println("Number of leaf nodes: ");
 		System.out.println(binaryTree.countLeafNodes(binaryTree.root));
+		
+		System.out.println("Number of nodes of degree one or two:");
+		System.out.println(binaryTree.countNodesOfDegreeOneOrTwo(binaryTree.root));
+		
+		System.out.println("Number of nodes of degree one:");
+		System.out.println(binaryTree.countNodesOfDegreeOne(binaryTree.root));
+		
+		System.out.println("Height of the tree:");
+		System.out.println(binaryTree.height(binaryTree.root));
 
 	}
 

@@ -147,15 +147,14 @@ public class BinaryTree {
 	public void iterativePostorder(Node node) {
 
 		Stack<Node> s = new Stack<>();
-		
-		while(node != null) {
-			
-			if(node.right != null) {
-				
+
+		while (node != null) {
+
+			if (node.right != null) {
+
 				s.push(node.right);
 				node = node.right;
-			}
-			else if (node.left != null) {
+			} else if (node.left != null) {
 
 				s.push(node.left);
 				node = node.left;
@@ -176,129 +175,189 @@ public class BinaryTree {
 		}
 
 		System.out.println(node);
-		
+
 		while (!q.isEmpty()) {
 
-			//returns and removes the node from the queue
+			// returns and removes the node from the queue
 			temp = q.remove();
-			
-			if(temp.left != null) {
-				
+
+			if (temp.left != null) {
+
 				q.add(temp.left);
 				System.out.println(temp.left);
 			}
-			
-			if(temp.right != null) {
-				
+
+			if (temp.right != null) {
+
 				q.add(temp.right);
 				System.out.println(temp.right);
 			}
 
 		}
 	}
-	
-	//counting nodes in a binary tree
+
+	// counting nodes in a binary tree
 	public int countNode(Node node) {
-		
-		if(node != null) {
-			
-			counter ++; 
-			
+
+		if (node != null) {
+
+			counter++;
+
 			countNode(node.left);
 			countNode(node.right);
-			
+
 		}
-		
+
 		return counter;
 	}
-	
-	//counting nodes in a binary tree
+
+	// counting nodes in a binary tree
 	public int countNodesXY(Node node) {
 		int x, y;
-		
-		if(node != null) {
-			
+
+		if (node != null) {
+
 			x = countNodesXY(node.left);
 			y = countNodesXY(node.right);
-			
-			return x + y +1;
+
+			return x + y + 1;
 		}
-		
+
 		return 0;
 	}
-	
-	//counting nodes of degree two
+
+	// counting nodes of degree two
 	public int countNodesOfDegreeTwo(Node node) {
 		int x, y;
-		
-		if(node != null) {
-			
+
+		if (node != null) {
+
 			x = countNodesOfDegreeTwo(node.left);
 			y = countNodesOfDegreeTwo(node.right);
-			
-			if(node.left != null && node.right != null) {
-				
-				return x + y +1;
-			}
-			else {
+
+			if (node.left != null && node.right != null) {
+
+				return x + y + 1;
+			} else {
 				return x + y;
 			}
-			
+
 		}
-		
+
 		return 0;
 	}
-	
-	//counting sum of all the nodes in a binary tree
+
+	// count nodes of degree one or two
+	public int countNodesOfDegreeOneOrTwo(Node node) {
+
+		int x, y;
+
+		if (node != null) {
+
+			// recursive step
+			x = countNodesOfDegreeOneOrTwo(node.left);
+			y = countNodesOfDegreeOneOrTwo(node.right);
+
+			if (node.left != null || node.right != null) {
+
+				return x + y + 1;
+			} else {
+
+				return x + y;
+			}
+		}
+
+		return 0;
+
+	}
+
+	// count nodes of degree one
+	public int countNodesOfDegreeOne(Node node) {
+
+		int x, y;
+
+		// base case
+		if (node == null) {
+
+			return 0;
+		}
+
+		// recursive steps
+		x = countNodesOfDegreeOne(node.left);
+		y = countNodesOfDegreeOne(node.right);
+
+		// using Exclusive OR: node.left != null ^ node.right != null
+		if ((node.left != null && node.right == null) || 
+				(node.left == null && node.right != null)) {
+
+			return x + y + 1;
+		} 
+		else {
+
+			return x + y;
+		}
+	}
+
+	// counting sum of all the nodes in a binary tree
 	public int sumOfAllElements(Node node) {
 		int x, y;
-		
-		if(node != null) {
-			
+
+		if (node != null) {
+
 			x = sumOfAllElements(node.left);
 			y = sumOfAllElements(node.right);
-			
+
 			return x + y + node.data;
 		}
-		
+
 		return 0;
 	}
-	
-	//counting leaf nodes
+
+	// counting leaf nodes
 	public int countLeafNodes(Node node) {
-		
-		if(node != null) {
-			
-			if(node.left == null && node.right == null) {
-				
+
+		if (node != null) {
+
+			if (node.left == null && node.right == null) {
+
 				leafCounter++;
 			}
-			
+
 			countLeafNodes(node.left);
 			countLeafNodes(node.right);
 		}
-		
+
 		return leafCounter;
 	}
 
+	// height of a binary tree
+	public int height(Node node) {
+
+		return getHeight(node) - 1;
+	}
+
+	// helper function to get the height
+	public int getHeight(Node node) {
+
+		int x, y;
+
+		// base case
+		if (node == null) {
+
+			return 0;
+		}
+
+		// recursive steps
+		x = getHeight(node.left);
+		y = getHeight(node.right);
+
+		if (x > y) {
+
+			return x + 1;
+		} else {
+
+			return y + 1;
+		}
+	}
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
