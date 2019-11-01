@@ -239,6 +239,60 @@ public class BinarySearchTree {
 		return parent;
 		
 	}
+	
+	//8. successor of a node
+	public Node successor(Node x) {
+		
+		//declare reference nodes
+		Node y;
+		
+		//find x in the tree
+		x = search(root, x.data);
+		
+		//if the right subtree of node x is non empty
+		if(x.right != null) {
+			
+			return minimum(x.right);
+		}
+		
+		//if the right subtree of node x is empty
+		y = parentOf(x.data);
+		
+		while(y != null && x == y.right) {
+			
+			x = y;
+			y = parentOf(y.data);
+		}
+		
+		return y;
+	}
+	
+	//9. predecessor of a node
+	public Node predecessor(Node x) {
+		
+		//declare reference nodes
+		Node y;
+		
+		//find x in the tree
+		x = search(root, x.data);
+		
+		//if the the left subtree of node x is nonempty
+		if(x.left != null) {
+			
+			return maximum(x.left);
+		}
+		
+		//if the left subtree of node x is empty
+		y = parentOf(x.data);
+		
+		while(y != null && x == y.left) {
+			
+			x = y;
+			y = parentOf(y.data);
+		}
+		
+		return y;
+	}
 }
 
 

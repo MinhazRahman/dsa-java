@@ -6,7 +6,7 @@ public class BinarySearchTreeMain {
 
 		BinarySearchTree bst = new BinarySearchTree();
 
-		// insert elements
+		// insert elements using recursive method
 		bst.insert(bst.root, 30);
 		bst.insert(bst.root, 20);
 		bst.insert(bst.root, 40);
@@ -15,7 +15,7 @@ public class BinarySearchTreeMain {
 		bst.insert(bst.root, 35);
 		bst.insert(bst.root, 50);
 
-		// insert elements
+		// insert elements using iterative method
 		/*
 		 * bst.insertNode(bst.root, 30); bst.insertNode(bst.root, 20);
 		 * bst.insertNode(bst.root, 40); bst.insertNode(bst.root, 10);
@@ -43,8 +43,16 @@ public class BinarySearchTreeMain {
 		Node maxVal = bst.maximumRecur(bst.root);
 		System.out.println("Maximum Val: " + maxVal);
 		
+		//parent node
 		Node parentNode = bst.parentOf(30);
 		System.out.println("parent node: " + parentNode);
+		
+		//successor and predecessor
+		Node successor = bst.successor(new Node(30));
+		System.out.println("Successor: " + successor);
+		
+		Node predecessor = bst.predecessor(new Node(30));
+		System.out.println("Predecessor: " + predecessor);
 
 		// print elements
 		System.out.println("Preorder:");
