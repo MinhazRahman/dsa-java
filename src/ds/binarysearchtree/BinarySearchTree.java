@@ -1,5 +1,6 @@
 package ds.binarysearchtree;
 
+
 /**
  * 1. Insertion using recursive method 2. Insertion using iterative method 3.
  * Tree traversals (preorder, inorder, postorder) 4. Searching in a tree 5.
@@ -18,7 +19,7 @@ public class BinarySearchTree {
 	}
 
 	// 1. insertion using recursive method
-	public Node insert(Node ptr, int key) {
+	public Node insert(Node node, int key) {
 
 		// create reference node
 		Node temp;
@@ -27,64 +28,67 @@ public class BinarySearchTree {
 		if (root == null) {
 
 			root = new Node(key);
-			ptr = root;
-			return ptr;
+			node = root;
+			return node;
 		}
 		// create new child node
-		else if (ptr == null) {
+		else if (node == null) {
 
 			temp = new Node(key);
 			return temp;
 		}
 
 		// put the new node at the correct position
-		if (key == ptr.data) { // if there is any matching node then don't insert
+		if (key == node.data) { // if there is any matching node then don't insert
 								// simply return
-			return ptr;
-		} else if (key < ptr.data) {
+			return node;
+			
+		} else if (key < node.data) {
 
-			ptr.left = insert(ptr.left, key); // recursive call
-		} else {
+			node.left = insert(node.left, key); // recursive call
+			
+		} else if (key > node.data) {
 
-			ptr.right = insert(ptr.right, key); // recursive call
+			node.right = insert(node.right, key); // recursive call
 		}
 
-		return ptr;
+		return node;
 	}
 
 	// 2. insertion using iterative method
-	public Node insertNode(Node ptr, int key) {
+	public Node insertNode(Node node, int key) {
 
 		// create reference nodes
-		Node temp, prev = null;
+		Node temp, parent = null;
 
 		// create root node
 		if (root == null) {
 
 			root = new Node(key);
-			ptr = root;
-			return ptr;
+			node = root;
+			return node;
 		}
 
 		// find the position
-		while (ptr != null) {
+		while (node != null) {
+
+			parent = node;
 
 			// if there is already a duplicate key in the tree
 			// then don't insert it
-			if (key == ptr.data) { // Binary search tree doesn't contain duplicate data
+			// Binary search tree doesn't contain duplicate data
 
-				return ptr;
-			}
+			if (key < node.data) {
 
-			// prev refers to the previous node
-			prev = ptr;
+				node = node.left;
 
-			if (key < ptr.data) {
+			} else if (key > node.data) {
 
-				ptr = ptr.left;
-			} else {
+				node = node.right;
+				
+			} else if (key == node.data) {
 
-				ptr = ptr.right;
+				return node;
 			}
 		}
 
@@ -92,12 +96,12 @@ public class BinarySearchTree {
 		temp = new Node(key);
 
 		// insert the node into the tree
-		if (key < prev.data) {
+		if (key < parent.data) {
 
-			prev.left = temp;
+			parent.left = temp;
 		} else {
 
-			prev.right = temp;
+			parent.right = temp;
 		}
 
 		return temp;
@@ -212,86 +216,145 @@ public class BinarySearchTree {
 
 		return maximumRecur(node.right);
 	}
-	
-	//7. parent node of a given node
+
+	// 7. parent node of a given node
 	public Node parentOf(int key) {
-		
-		//parent holds the parent node
+
+		// parent holds the parent node
 		Node parent = null;
-		//start the search from the root node
+		// start the search from the root node
 		Node node = root;
 
-		while(node != null && key != node.data) {
-			
-			//points to the parent node
+		while (node != null && key != node.data) {
+
+			// points to the parent node
 			parent = node;
-			
-			if(key < node.data) {
-				
+
+			if (key < node.data) {
+
 				node = node.left;
-			}
-			else {
-				
+			} else {
+
 				node = node.right;
 			}
 		}
-		
+
 		return parent;
-		
+
 	}
-	
-	//8. successor of a node
+
+	// 8. successor of a node
 	public Node successor(Node x) {
-		
-		//declare reference nodes
+
+		// declare reference nodes
 		Node y;
-		
-		//find x in the tree
+
+		// find x in the tree
 		x = search(root, x.data);
-		
-		//if the right subtree of node x is non empty
-		if(x.right != null) {
-			
+
+		// if the right subtree of node x is non empty
+		if (x.right != null) {
+
 			return minimum(x.right);
 		}
-		
-		//if the right subtree of node x is empty
+
+		// if the right subtree of node x is empty
 		y = parentOf(x.data);
-		
-		while(y != null && x == y.right) {
-			
+
+		while (y != null && x == y.right) {
+
 			x = y;
 			y = parentOf(y.data);
 		}
-		
+
+		return y;
+	}
+
+	// 9. predecessor of a node
+	public Node predecessor(Node x) {
+
+		// declare reference nodes
+		Node y;
+
+		// find x in the tree
+		x = search(root, x.data);
+
+		// if the the left subtree of node x is nonempty
+		if (x.left != null) {
+
+			return maximum(x.left);
+		}
+
+		// if the left subtree of node x is empty
+		y = parentOf(x.data);
+
+		while (y != null && x == y.left) {
+
+			x = y;
+			y = parentOf(y.data);
+		}
+
 		return y;
 	}
 	
-	//9. predecessor of a node
-	public Node predecessor(Node x) {
+	//10. inorder successor: minimum value in the right sub tree
+	public Node inorderSuccessor(Node node) {
 		
-		//declare reference nodes
-		Node y;
+		//find the node in the tree
+		node = search(root, node.data);
 		
-		//find x in the tree
-		x = search(root, x.data);
-		
-		//if the the left subtree of node x is nonempty
-		if(x.left != null) {
+		//find the inorder successor
+		while(node != null && node.right != null) {
 			
-			return maximum(x.left);
+			return minimum(node.right);
 		}
 		
-		//if the left subtree of node x is empty
-		y = parentOf(x.data);
+		return node;
+	}
+	
+	//11. inorder predecessor : maximum value in left sub tree
+	public Node inorderPredecessor(Node node) {
 		
-		while(y != null && x == y.left) {
+		//find the node in the tree
+		node = search(root, node.data);
+		
+		//inorder predecessor
+		while(node != null && node.left != null) {
 			
-			x = y;
-			y = parentOf(y.data);
+			return maximum(node.left);
 		}
 		
-		return y;
+		return node;
+	}
+	
+	//12. height of a binary tree
+	public int height(Node node) {
+
+		return getHeight(node) - 1;
+	}
+
+	// helper function to get the height
+	public int getHeight(Node node) {
+
+		int x, y;
+
+		// base case
+		if (node == null) {
+
+			return 0;
+		}
+
+		// recursive steps
+		x = getHeight(node.left);
+		y = getHeight(node.right);
+
+		if (x > y) {
+
+			return x + 1;
+		} else {
+
+			return y + 1;
+		}
 	}
 }
 
