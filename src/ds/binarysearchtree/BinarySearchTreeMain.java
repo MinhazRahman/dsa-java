@@ -66,7 +66,10 @@ public class BinarySearchTreeMain {
 		
 		int h = bst.height(bst.root);
 		System.out.println("Height: " + h);
-
+		
+		//delete a node
+		bst.delete(bst.root, 6);
+		
 		// print elements
 		System.out.println("Preorder:");
 		bst.preorder(bst.root);

@@ -7,6 +7,7 @@ package ds.binarysearchtree;
  * Minimum and Maximum 6. Successor and Predecessor 7. Deletion 8. Parent node
  * 
  * Binary search tree doesn't contain duplicate data
+ * Inorder traversal of bst gives sorted order
  */
 public class BinarySearchTree {
 
@@ -355,6 +356,56 @@ public class BinarySearchTree {
 
 			return y + 1;
 		}
+	}
+	
+	//deletion of a node
+	public Node delete(Node node, int key) {
+		
+		Node temp;
+	
+		if(node == null) {
+			
+			return null;
+		}
+		
+		//for leaf node
+		if(node.left == null && node.right == null) {
+			
+			if(node == root) {
+				
+				root = null;
+			}
+			
+			return null;
+		}
+		
+		if(key < node.data) {
+			
+			node.left = delete(node.left, key);
+		}
+		else if(key > node.data) {
+			
+			node.right = delete(node.right, key);
+		}
+		else {
+			
+			if(height(node.left) > height(node.right)) {
+				
+				temp = inorderPredecessor(node.left);
+				node.data = temp.data;
+				node.left = delete(node.left, temp.data);
+			}
+			
+			else { //height(node.left) < height(node.right
+				
+				temp = inorderSuccessor(node.right);
+				node.data = temp.data;
+				node.right = delete(node.right, temp.data);
+			}
+		}
+		
+		return node;
+	
 	}
 }
 
