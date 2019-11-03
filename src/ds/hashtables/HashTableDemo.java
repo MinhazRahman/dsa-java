@@ -27,25 +27,25 @@ public class HashTableDemo {
 	}
 	
 	//insert an element into the hash table
-	public void insert(int x) {
+	public void insert(int key) {
 		
 		//get the index
-		int i = hash(x);
+		int i = hash(key);
 		
-		//insert x into the LinkedList at array index i
-		hashtable[i].add(x);
+		//insert element into the LinkedList
+		hashtable[i].add(new Integer(key));
 	}
 	
 	//search for an element
-	public int search(int x) {
+	public int search(int key) {
 		
 		//get the array index
-		int index = hash(x);
+		int index = hash(key);
 		
 		//compare each element of the list hashtable[index] with x
-		for(int e: hashtable[index]) {
+		for(Integer e: hashtable[index]) {
 			
-			if(x == e) {
+			if(key == e.intValue()) {
 				
 				return e;
 			}
@@ -56,15 +56,15 @@ public class HashTableDemo {
 	}
 	
 	//delete an element
-	public int delete(int x) {
+	public int delete(int key) {
 		
 		//get the index of the array
-		int index = hash(x);
+		int index = hash(key);
 		
 		//deletion process
-		for(int e : hashtable[index]) {
+		for(Integer e : hashtable[index]) {
 			
-			if(x == e) {
+			if(key == e.intValue()) {
 				
 				//get the index of the element in the list
 				int i = hashtable[index].indexOf(e);
@@ -80,9 +80,9 @@ public class HashTableDemo {
 	}
 	
 	//hash function
-	public int hash(int x) {
+	public int hash(int key) {
 		
-		int index = x%10;
+		int index = key%10;
 		
 		return index;
 	}
