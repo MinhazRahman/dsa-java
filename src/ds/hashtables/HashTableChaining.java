@@ -1,19 +1,22 @@
 package ds.hashtables;
 
+/**
+ * Collision resolution through chaining
+ * */
 import java.util.LinkedList;
 
-public class HashTableDemo {
+public class HashTableChaining {
 	
 	//declare an array of linked list
 	LinkedList<Integer>[] hashtable;
 	
 	//constructors
-	public HashTableDemo() {
+	public HashTableChaining() {
 		
 	}
 	
 	@SuppressWarnings("unchecked")
-	public HashTableDemo(int n) {
+	public HashTableChaining(int n) {
 		
 		//create an array of linked lists
 		this.hashtable = new LinkedList[n];
@@ -37,7 +40,7 @@ public class HashTableDemo {
 	}
 	
 	//search for an element
-	public int search(int key) {
+	public Integer search(int key) {
 		
 		//get the array index
 		int index = hash(key);
@@ -52,11 +55,11 @@ public class HashTableDemo {
 		}
 		
 		
-		return -1;
+		return null;
 	}
 	
 	//delete an element
-	public int delete(int key) {
+	public Integer delete(int key) {
 		
 		//get the index of the array
 		int index = hash(key);
@@ -76,7 +79,7 @@ public class HashTableDemo {
 			}
 		}
 		
-		return -1;
+		return null;
 	}
 	
 	//hash function

@@ -5,7 +5,7 @@ public class HashTableMain {
 	public static void main(String[] args) {
 
 		//create a hash table that contains n slots
-		HashTableDemo table = new HashTableDemo(10);
+		HashTableChaining table = new HashTableChaining(10);
 		
 		//insert values
 		table.insert(5);
@@ -21,7 +21,7 @@ public class HashTableMain {
 		table.printTable();
 		
 		//search for an element
-		int val = table.search(5);
+		Integer val = table.search(5);
 		System.out.println("Found: " + val);
 		val = table.search(27);
 		System.out.println("Found: " + val);
