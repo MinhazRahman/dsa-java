@@ -4,10 +4,12 @@ public class BreadthFirstSearchMain {
 
 	public static void main(String[] args) {
 
-		BreadthFirstSearch bfs = new BreadthFirstSearch();
+		//create object
+		BreadthFirstSearch bfs = new BreadthFirstSearch(7);
 		
 		//call breadthFirstSearch() method with a starting vertex
-		bfs.breadthFirstSearch(4);
+		System.out.println("BFS Iterative:");
+		bfs.breadthFirstSearch(1);
 	}
 
 }

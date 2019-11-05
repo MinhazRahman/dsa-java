@@ -14,15 +14,18 @@ import java.util.Queue;
  * 		  /  \
  * 		 /    \
  * 		6	   7
+ * 
+ * 1. visiting 
+ * 2. exploring
  * */
 
 public class BreadthFirstSearch {
 	
-	//declare a queue
+	//queue will store the vertices to be explored
 	Queue<Integer> queue;
 	
-	//holds a vertex removed from the queue
-	int u;
+	//no of vertices
+	int n;
 	
 	// (8x8) adjacency matrix
 	int[][] adj = { {0,0,0,0,0,0,0,0},
@@ -39,15 +42,19 @@ public class BreadthFirstSearch {
 	int[] visited = {0,0,0,0,0,0,0,0};
 	
 	//constructor
-	public BreadthFirstSearch(){
+	public BreadthFirstSearch(int n){
 		
-		this.queue = new ArrayDeque<>();	
+		this.queue = new ArrayDeque<>();
+		this.n = n;
 	}
 	
-	//breadth first search,
+	//breadth first search using iterative method
 	void breadthFirstSearch(int vertex) {
 		
-		//visited
+		//holds the vertex removed from the queue
+		int u;
+		
+		//visit
 		visited[vertex] = 1;
 		
 		//BFS
@@ -58,22 +65,26 @@ public class BreadthFirstSearch {
 		
 		while(!queue.isEmpty()) {
 			
-			//take out the vertex from the queue
+			//take out the vertex from the queue for exploration
 			u = queue.remove();
 			
-			//exploring vertex u
-			for(int v = 1; v <= 7; v++) {
+			//exploring vertex u, u=row, v = column
+			for(int v = 1; v <= n; v++) {
 				
 				if(adj[u][v] == 1 && visited[v] == 0) {
 					
+					//visit
 					visited[v] = 1;
+					//BFS
 					System.out.println(v);
+					//add vertex to the queue for future exploration
 					queue.add(v);
 				}
 			}	
 		}
 	}
-
+	
+	
 }
 
 
