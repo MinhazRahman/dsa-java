@@ -35,7 +35,7 @@ public class MissingElement {
 	//finding missing element using difference
 	//difference = first element - zero
 	//missing element = difference + index;
-	
+	//time : O(n)
 	public int getMissingElementInSortedArray(int[] a) {
 		
 		//variables
@@ -47,7 +47,7 @@ public class MissingElement {
 		//finding missing element
 		for(index = 0; index < n; index ++) {
 			
-			if(a[index] - index != diff) {
+			if((a[index] - index) != diff) {
 				
 				missingElement = diff + index;
 				
