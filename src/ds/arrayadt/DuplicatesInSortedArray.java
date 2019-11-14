@@ -27,7 +27,7 @@ public class DuplicatesInSortedArray {
 		
 	}
 	
-	//find and count duplicate values
+	//find and count duplicate values, time complexity: O(n)
 	public void findDuplicate(int[] a) {
 		
 		//variables
