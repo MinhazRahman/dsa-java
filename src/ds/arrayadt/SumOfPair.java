@@ -1,5 +1,10 @@
 package ds.arrayadt;
 
+/**
+ * Find sum of pair (b, c) where b + c = k in an unsorted array
+ * 
+ * */
+
 public class SumOfPair {
 	
 	//time complexity: O(n^2)
