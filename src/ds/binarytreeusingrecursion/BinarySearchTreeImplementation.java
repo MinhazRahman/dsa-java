@@ -57,7 +57,7 @@ public class BinarySearchTreeImplementation {
 		
 		//delete a node 
 		System.out.println("Delete a node: ");
-		binaryTree.delete(3);
+		binaryTree.delete(2);
 		
 		System.out.println("Preorder:");
 		binaryTree.preorder(binaryTree.root);
@@ -71,6 +71,10 @@ public class BinarySearchTreeImplementation {
 		System.out.println("Predecessor: ");
 		Node predecessor = binaryTree.predecessorOf(binaryTree.root, 6);
 		System.out.println(predecessor);
+		
+		//level order traversal
+		System.out.println("Level Order Traversal: ");
+		binaryTree.levelOrderTraversal();
 		
 	}
 	

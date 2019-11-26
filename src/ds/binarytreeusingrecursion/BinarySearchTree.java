@@ -1,12 +1,16 @@
 package ds.binarytreeusingrecursion;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * 1. Insertion
  * 2. Deletion
  * 3. Searching
  * 4. Tree Traversal
- *		-Breadth First Search
- *		-Depth First Search
+ *		-Breadth First Search: level order traversal
+ *		-Depth First Search: preorder, inorder, postorder
+ *
  * */
 
 public class BinarySearchTree {
@@ -293,6 +297,39 @@ public class BinarySearchTree {
 	public Node largestNode(Node node) {
 		
 		return node.right == null ? node: largestNode(node.right);
+	}
+	
+	/** 9. Breadth first search: Level order traversal*/
+	public void levelOrderTraversal() {
+		
+		if(root == null) {
+			
+			return;
+		}
+		
+		//create a queue
+		Queue<Node> q = new LinkedList<>();
+		
+		//add the root to the queue
+		q.add(root);
+		
+		while(!q.isEmpty()) {
+			
+			//remove the head from the queue
+			Node node = q.remove();
+			
+			System.out.print(node + " ");
+			
+			if(node.left != null) {
+				
+				q.add(node.left);
+			}
+			
+			if(node.right != null) {
+				
+				q.add(node.right);
+			}
+		}
 	}
 
 }
